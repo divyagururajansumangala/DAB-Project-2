@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="static/style/styles.css" />
+    <title>Dashboard | Project</title>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
+<body id="body">
+    <div class="container">
+        <nav class="navbar">
+            <div class="nav_icon" onclick="toggleSidebar()">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </div>
+            <div class="navbar__left">
+                <a href="/index">Admin</a>
+                <a class="active_link" href="/view_one">Analytics</a>
+                <a href="/view_two">Visuals</a>
+                <a href="/view_three">Documentation</a>
+
+            </div>
+            <div class="navbar__right">
+                <a href="#">
+                    <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
+                </a>
+
+                <a href="#">
+                    <img width="30" src="assets/avatar.svg" alt="" />
+                    <!-- <i class="fa fa-user-circle-o" aria-hidden="true"></i> -->
+                </a>
+            </div>
+        </nav>
+
+        <main>
+            <div class="main__container">
+                <!-- MAIN TITLE STARTS HERE -->
+
+                <div class="main__title">
+                    <!-- <img src="http://placeskull.com/30/30" alt="" /> -->
+                    <div class="main__greeting">
+                        <h1>Airplane Crash EDA</h1>
+
+                    </div>
+                </div>
+
+                <!-- MAIN TITLE ENDS HERE -->
+
+
+                <!-- CHARTS STARTS HERE -->
+                <div class="charts">
+                    <div class="charts__left">
+                        <div class="charts__left__title">
+                            <div>
+                                <h1>Crash Report -1</h1>
+
+                            </div>
+                            <i class="fa fa-database" aria-hidden="true"></i>
+                        </div>
+                        <div id="chart_fatlity_year"></div>
+                    </div>
+                    <div class="charts__left">
+                        <div class="charts__left__title">
+                            <div>
+                                <h1>Crash Report -2</h1>
+
+                            </div>
+                            <i class="fa fa-database" aria-hidden="true"></i>
+                        </div>
+                        <div id="chart_year"></div>
+                    </div>
+
+                    <div class="charts__left">
+                        <div class="charts__left__title">
+                            <div>
+                                <h1>Crash Report -3</h1>
+
+                            </div>
+                            <i class="fa fa-database" aria-hidden="true"></i>
+                        </div>
+                        <div id="chart_year_bottom"></div>
+                    </div>
+
+                    <div class="charts__left">
+                        <div class="charts__left__title">
+                            <div>
+                                <h1>Crash Report -4</h1>
+
+                            </div>
+                            <i class="fa fa-database" aria-hidden="true"></i>
+                        </div>
+                        <div id="plot1"></div>
+                    </div>
+                    <div class="charts__left">
+                        <div class="charts__left__title">
+                            <div>
+                                <h1>Crash Report -5</h1>
+
+                            </div>
+                            <i class="fa fa-database" aria-hidden="true"></i>
+                        </div>
+                        <div id="plot2"></div>
+                    </div>
+                    <div class="charts__left">
+                        <div class="charts__left__title">
+                            <div>
+                                <h1>Crash Report -6</h1>
+
+                            </div>
+                            <i class="fa fa-database" aria-hidden="true"></i>
+                        </div>
+                        <div id="plot4"></div>
+                    </div>
+                    <div class="charts__left">
+                        <div class="charts__left__title">
+                            <div>
+                                <h1>Crash Report -7</h1>
+
+                            </div>
+                            <i class="fa fa-database" aria-hidden="true"></i>
+                        </div>
+                        <div id="plot3"></div>
+                    </div>
+                    <div class="charts__left">
+                        <div class="charts__left__title">
+                            <div>
+                                <h1>Crash Report -8</h1>
+
+                            </div>
+                            <i class="fa fa-database" aria-hidden="true"></i>
+                        </div>
+                        <div id="chart_ac_type"></div>
+                    </div>
+
+
+                    <!-- <div class="charts__right">
+                        <div class="charts__right__title">
+                            <div>
+                                <h1>Stats Reports</h1>
+                                
+                            </div>
+                            <i class="fa fa-fire" aria-hidden="true"></i>
+                        </div>
+
+                        <div class="charts__right__cards">
+                            <div class="card1">
+                                <h1>Income</h1>
+                                <p>$75,300</p>
+                            </div>
+
+                            <div class="card2">
+                                <h1>Sales</h1>
+                                <p>$124,200</p>
+                            </div>
+
+                            <div class="card3">
+                                <h1>Users</h1>
+                                <p>3900</p>
+                            </div>
+
+                            <div class="card4">
+                                <h1>Orders</h1>
+                                <p>1881</p>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+                <!-- CHARTS ENDS HERE -->
+            </div>
+        </main>
+
+        <div id="sidebar">
+            <div class="sidebar__title">
+                <div class="sidebar__img">
+                    <img src="http://placeskull.com/45/45" alt="logo" />
+                    <h1 style="margin-left:15px;">Hottest-100</h1>
+                </div>
+                <i onclick="closeSidebar()" class="fa fa-times" id="sidebarIcon" aria-hidden="true"></i>
+            </div>
+
+            <div class="sidebar__menu">
+                <div class="sidebar__link active_menu_link">
+                    <i class="fa fa-home"></i>
+                    <a href="#">Dashboard</a>
+                </div>
+                <h2>Developers</h2>
+                <div class="sidebar__link">
+                    <i class="fa fa-user-secret" aria-hidden="true"></i>
+                    <a href="#">Bimal</a>
+                </div>
+                <div class="sidebar__link">
+                    <i class="fa fa-building-o"></i>
+                    <a href="#">Kelly</a>
+                </div>
+                <div class="sidebar__link">
+                    <i class="fa fa-wrench"></i>
+                    <a href="#">Lily</a>
+                </div>
+                <div class="sidebar__link">
+                    <i class="fa fa-archive"></i>
+                    <a href="#">Divya</a>
+                </div>
+                <div class="sidebar__link">
+                    <i class="fa fa-handshake-o"></i>
+                    <a href="#">Warren</a>
+                </div>
+                <div class="sidebar__logout">
+                    <i class="fa fa-power-off"></i>
+                    <a href="#">Log out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
+    <script>
+        d3.json('/landingsites', function(data) {
+            data_low = data.slice(Math.max(data.length - 7, 0))
+
+            data_hight = data.slice(0, 10);
+
+            data_hight = data_hight.reverse();
+            var plotdata = [{
+                type: 'bar',
+                x: data_hight.map(d => d.fatalities),
+                y: data_hight.map(d => d.country),
+                orientation: 'h'
+            }];
+            var layout = {
+                title: "Top 10 Fatalities From 1908  to 2019 by Country",
+                margin: {
+                    l: 100,
+                    r: 100,
+                    t: 100,
+                    b: 100
+                }
+            };
+
+            var plotdata_2 = [{
+                values: data_hight.map(d => d.fatalities),
+                labels: data_hight.map(d => d.country),
+                type: 'pie'
+            }];
+
+            var layout_2 = {
+                title: "Accidents By % From 1908  to 2019",
+                height: 400,
+                width: 500
+            };
+
+            var plotdata_3 = [{
+                type: 'bar',
+                x: data_low.map(d => d.fatalities),
+                y: data_low.map(d => d.country),
+                orientation: 'h'
+            }];
+            var layout_3 = {
+                title: "Bottom 10 Country fatalities From 1908  to 2019",
+                margin: {
+                    l: 200,
+                    r: 100,
+                    t: 100,
+                    b: 100
+                }
+            };
+
+            Plotly.newPlot('plot1', plotdata, layout, {
+                displayModeBar: false
+            });
+            Plotly.newPlot('plot2', plotdata_2, layout_2, {
+                displayModeBar: false
+            });
+            Plotly.newPlot('plot3', plotdata_3, layout_3, {
+                displayModeBar: false
+            });
+        })
+
+        d3.json('/operators', function(data_operator) {
+
+            top_operator = data_operator.slice(0, 10);
+
+            top_operator = top_operator.reverse();
+
+            bottom_10 = data_operator.slice(Math.max(data_operator.length - 5, 0));
+
+            console.log(top_operator);
+            var plotdata_4 = [{
+                type: 'bar',
+                x: top_operator.map(d => d.fatalities),
+                y: top_operator.map(d => d.operator),
+                orientation: 'h'
+            }];
+            var layout_4 = {
+                title: "Top 10 Operators with highest crashes From 1908  to 2019",
+                margin: {
+                    l: 250,
+                    r: 100,
+                    t: 100,
+                    b: 100
+                }
+            };
+
+            var plotdata_5 = [{
+                type: 'bar',
+                x: bottom_10.map(d => d.fatalities),
+                y: bottom_10.map(d => d.operator),
+                orientation: 'h'
+            }];
+            var layout_5 = {
+                title: "Safest Operators over 1908  to 2019",
+                margin: {
+                    l: 250,
+                    r: 100,
+                    t: 100,
+                    b: 100
+                }
+            };
+            Plotly.newPlot('plot4', plotdata_4, layout_4, {
+                displayModeBar: false
+            });
+            Plotly.newPlot('plot5', plotdata_5, layout_5, {
+                displayModeBar: false
+            });
+
+        })
+
+
+        d3.json('/year', function(data_year) {
+            data_year_top = data_year.slice(0, 10);
+            var options = {
+                series: [{
+                    name: "Crash Count",
+                    data: data_year_top.map(d => d.operator)
+                }, ],
+                chart: {
+
+                    type: 'line',
+                    dropShadow: {
+                        enabled: true,
+                        color: '#000',
+                        top: 18,
+                        left: 7,
+                        blur: 10,
+                        opacity: 0.2
+                    },
+                    toolbar: {
+                        show: false
+                    }
+                },
+                colors: ['#77B6EA', '#545454'],
+                dataLabels: {
+                    enabled: true,
+                },
+                stroke: {
+                    curve: 'smooth'
+                },
+                title: {
+                    text: 'Maximun Crash Count over Years',
+                    align: 'centre'
+                },
+                grid: {
+                    borderColor: '#e7e7e7',
+                    row: {
+                        colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+                        opacity: 0.5
+                    },
+                },
+                markers: {
+                    size: 1
+                },
+                xaxis: {
+                    categories: data_year_top.map(d => d.year),
+
+                },
+                yaxis: {
+
+
+                },
+                legend: {
+                    position: 'top',
+                    horizontalAlign: 'right',
+                    floating: true,
+                    offsetY: -25,
+                    offsetX: -5
+                }
+            };
+
+            var chart = new ApexCharts(document.querySelector("#chart_year"), options);
+            chart.render();
+
+            bottom_10_year = data_year.slice(Math.max(data_year.length - 7, 0));
+
+            var options_1 = {
+                series: [{
+                    name: "Crash Count",
+                    data: bottom_10_year.map(d => d.operator)
+                }, ],
+                chart: {
+
+                    type: 'line',
+                    dropShadow: {
+                        enabled: true,
+                        color: '#000',
+                        top: 18,
+                        left: 7,
+                        blur: 10,
+                        opacity: 0.2
+                    },
+                    toolbar: {
+                        show: false
+                    }
+                },
+                colors: ['#77B6EA', '#545454'],
+                dataLabels: {
+                    enabled: true,
+                },
+                stroke: {
+                    curve: 'smooth'
+                },
+                title: {
+                    text: 'Minimun Crash Count over Years',
+                    align: 'centre'
+                },
+                grid: {
+                    borderColor: '#e7e7e7',
+                    row: {
+                        colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+                        opacity: 0.5
+                    },
+                },
+                markers: {
+                    size: 1
+                },
+                xaxis: {
+                    categories: bottom_10_year.map(d => d.year),
+
+                },
+                yaxis: {
+
+
+                },
+                legend: {
+                    position: 'top',
+                    horizontalAlign: 'right',
+                    floating: true,
+                    offsetY: -25,
+                    offsetX: -5
+                }
+            };
+
+            var chart_1 = new ApexCharts(document.querySelector("#chart_year_bottom"), options_1);
+            chart_1.render();
+
+        });
+
+        d3.json('/fatalitiesyear', function(fatality_year) {
+            data_year_top = fatality_year.slice(0, 10);
+
+            var options = {
+                series: [{
+                    name: 'People Boarded',
+                    data: data_year_top.map(d => d.aboard)
+                }, {
+                    name: 'People Died',
+                    data: data_year_top.map(d => d.fatalities)
+                }, {
+                    name: 'Ground Deaths',
+                    data: data_year_top.map(d => d.ground)
+                }],
+                chart: {
+                    type: 'bar',
+                    height: 350,
+                    toolbar: {
+                        show: false
+                    }
+                },
+                plotOptions: {
+                    bar: {
+                        horizontal: false,
+                        columnWidth: '55%',
+                        endingShape: 'rounded'
+                    },
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                title: {
+                    text: 'Max. Fatalities over the Years',
+                    align: 'centre'
+                },
+                stroke: {
+                    show: true,
+                    width: 2,
+                    colors: ['transparent']
+                },
+                xaxis: {
+                    categories: data_year_top.map(d => d.year),
+                },
+                yaxis: {
+
+                },
+                fill: {
+                    opacity: 1
+                },
+                tooltip: {
+
+                }
+            };
+
+            var chart = new ApexCharts(document.querySelector("#chart_fatlity_year"), options);
+            chart.render();
+
+        });
+        d3.json('/aircraft_type', function(fatality_ac_type) {
+            fatality_ac_type = fatality_ac_type.slice(0, 7);
+            var options = {
+                series: fatality_ac_type.map(d => d.fatalities),
+                chart: {
+                    width: 700,
+                    type: 'pie',
+                },
+                title: {
+                    text: '% of Crashes Based on Aircraft Type',
+                    align: 'centre'
+                },
+                labels: fatality_ac_type.map(d => d.ac_type),
+                responsive: [{
+                    breakpoint: 480,
+                    options: {
+                        chart: {
+                            width: 200
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }]
+            };
+
+            var chart = new ApexCharts(document.querySelector("#chart_ac_type"), options);
+            chart.render();
+
+        });
+    </script>
+    </head>
+
+</body>
+
+</html>
